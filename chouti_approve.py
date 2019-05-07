@@ -12,6 +12,7 @@ from bs4 import BeautifulSoup
 # 是一个不全的cookie，这是个伪造的cookie，所以要通过爬虫点赞某个文章，就需要先爬去首页，获取cookie，然后登陆，最后点暂时使用首页时获取的cookie进行登陆
 # 相当于用户登陆时如果没有携带cookie，那这次请求不是用户出发的时爬虫；如果携带了cookie，我在后台通过cookie有会话，那么我就再这个会话中存储用户登陆
 # 成功的信息；然后构建一些假的cookie返回给客户端。对于这种情况只需用第一次的cookie带上进行登陆，登陆成功后，后面就都是用第一次cookie进行访问。
+# 抽屉还有一点业务就是，登陆和首页时同一个页面，所以访问首页时用户的必经过程，所以能通过首页这种模式进行反爬虫。
 
 # 访问首页拿到cookie
 res_index = requests.get(url='https://dig.chouti.com/',
